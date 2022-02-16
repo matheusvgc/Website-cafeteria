@@ -31,3 +31,25 @@ function scrollHeader() {
   else header.classList.remove('scroll-header')
 }
 window.addEventListener('scroll', scrollHeader)
+
+// FILTRO DE PRODUTOS MIXITUP
+
+let mixerProducts = mixitup('.products__content', {
+  selectors: {
+    target: '.products__card'
+  },
+  animation: {
+    duration: 300
+  }
+})
+
+mixerProducts.filter('.delicacies')
+
+const linkProducts = document.querySelectorAll('.products__item')
+
+function activeProducts() {
+  linkProducts.forEach(l => l.classList.remove('active-product'))
+  this.classList.add('active-product')
+}
+
+linkProducts.forEach(l => l.addEventListener('click', activeProducts))
