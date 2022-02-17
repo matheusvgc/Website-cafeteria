@@ -92,3 +92,11 @@ function scrollActive() {
   })
 }
 window.addEventListener('scroll', scrollActive)
+
+onload = () => {
+  const load = document.getElementById('load')
+
+  setTimeout(() => {
+    load.style.display = 'none'
+  }, 2000)
+}
