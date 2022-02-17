@@ -53,3 +53,42 @@ function activeProducts() {
 }
 
 linkProducts.forEach(l => l.addEventListener('click', activeProducts))
+
+/*==================== SCROLL UP ====================*/
+
+function scrollUp() {
+  const scrollUp = document.getElementById('scroll-up')
+
+  if (this.scrollY >= 350) scrollUp.classList.add('show-scroll')
+  else scrollUp.classList.remove('show-scroll')
+}
+window.addEventListener('scroll', scrollUp)
+
+/*================ SCROLL SECTION ACTIVE LINK ================*/
+
+const sections = document.querySelectorAll('section[id]')
+
+function scrollActive() {
+  const scrollY = window.pageYOffset
+
+  sections.forEach(current => {
+    const sectionHeight = current.offsetHeight
+    const sectionTop = current.offsetTop - 58
+    const sectionId = current.getAttribute('id')
+
+    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      if (document.querySelector('.nav__menu a[href*=' + sectionId + ']')) {
+        document
+          .querySelector('.nav__menu a[href*=' + sectionId + ']')
+          .classList.add('active-link')
+      }
+    } else {
+      if (document.querySelector('.nav__menu a[href*=' + sectionId + ']')) {
+        document
+          .querySelector('.nav__menu a[href*=' + sectionId + ']')
+          .classList.remove('active-link')
+      }
+    }
+  })
+}
+window.addEventListener('scroll', scrollActive)
